@@ -14,37 +14,37 @@ public class UserApi {
     @Autowired
     private UserService userService;
 
-    @GetMapping
+    @GetMapping("/page")
     public void page(Page page) {
 
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public void update(User user) {
 
     }
 
-    @PostMapping
+    @PostMapping("save")
     public void save(User user) {
-
+        userService.save(user);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/remove")
     public void remove(String id) {
 
     }
 
-    @GetMapping
+    @GetMapping("/count")
     public int count() {
         return 0;
     }
 
-    @GetMapping
+    @GetMapping("find")
     public User findById(String id) {
         return userService.findOne(id);
     }
 
-    @GetMapping
+    @GetMapping("/findAll")
     public List<User> findAllList() {
         return null;
     }

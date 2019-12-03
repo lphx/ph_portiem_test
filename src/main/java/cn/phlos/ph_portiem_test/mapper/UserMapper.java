@@ -2,10 +2,7 @@ package cn.phlos.ph_portiem_test.mapper;
 
 
 import cn.phlos.ph_portiem_test.domain.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 /**
  * User映射类
@@ -14,11 +11,19 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface UserMapper {
 
-    @Select("SELECT * FROM T_USER WHERE PHONE = #{id}")
+    @Results(id = "userSelect",value={
+            @Result(id=true,column="id",property="id",javaType=Integer.class),
+            @Result(id=true,column="name",property="name",javaType=String.class),
+            @Result(id=true,column="password",property="password",javaType=String.class),
+            @Result(id=true,column="phone",property="phone",javaType=String.class),
+    })
+
+    @Select("SELECT * FROM t_user WHERE PHONE = #{id}")
+    @ResultMap(value = "userSelect")
     User findOne(@Param("id") String id);
 
-    @Insert("INSERT INTO T_USER(NAME, PASSWORD, PHONE) VALUES(#{name}, #{password}, #{phone})")
-    int insert(@Param("name") String name, @Param("password") String password, @Param("phone") String phone);
+    @Insert("INSERT INTO t_user(name, password, phone) VALUES(#{name}, #{password}, #{phone})")
+    int insert(User user);
 
 }
 
