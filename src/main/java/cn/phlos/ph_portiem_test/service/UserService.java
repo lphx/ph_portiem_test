@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface UserService {
 
-    void page(Page page);
+    List<User> page(Page page);
     void update(User user);
-    void save(User user);
-    void remove(String id);
+    int save(User user);
+    void remove(Integer id);
     int count();
     User findOne(Integer id);
     List<User> findAllList();

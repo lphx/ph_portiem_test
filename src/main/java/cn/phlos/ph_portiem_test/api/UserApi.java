@@ -14,29 +14,32 @@ public class UserApi {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/page")
-    public void page(Page page) {
-
+    @PostMapping("/page")
+    public  List<User> page(Page page) {
+        return userService.page(page);
     }
 
     @PutMapping("/update")
-    public void update(User user) {
-
+    public String update(User user) {
+        userService.update(user);
+        return "success";
     }
 
     @PostMapping("save")
-    public void save(User user) {
-        userService.save(user);
+    public int save(User user) {
+        int count = userService.save(user);
+        return count;
     }
 
     @DeleteMapping("/remove")
-    public void remove(String id) {
-
+    public String remove(Integer id) {
+        userService.remove(id);
+        return "success";
     }
 
     @GetMapping("/count")
     public int count() {
-        return 0;
+        return userService.count();
     }
 
     @GetMapping("find")
@@ -46,7 +49,7 @@ public class UserApi {
 
     @GetMapping("/findAll")
     public List<User> findAllList() {
-        return null;
+        return userService.findAllList();
     }
 
 }

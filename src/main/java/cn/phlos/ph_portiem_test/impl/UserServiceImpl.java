@@ -15,24 +15,24 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public void page(Page page) {
-
+    public  List<User> page(Page page) {
+        return userMapper.page(page);
     }
 
     public void update(User user) {
-
+        userMapper.update(user);
     }
 
-    public void save(User user) {
-        userMapper.insert(user);
+    public int save(User user) {
+        return userMapper.save(user);
     }
 
-    public void remove(String id) {
-
+    public void remove(Integer id) {
+        userMapper.remove(id);
     }
 
     public int count() {
-        return 0;
+        return userMapper.count();
     }
 
     public User findOne(Integer id) {
@@ -40,6 +40,6 @@ public class UserServiceImpl implements UserService {
     }
 
     public List<User> findAllList() {
-        return null;
+        return userMapper.findAllList();
     }
 }
