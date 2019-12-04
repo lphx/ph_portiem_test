@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
         return 0;
     }
 
-    public User findOne(String id) {
+    public User findOne(Integer id) {
         return userMapper.findOne(id);
     }
 

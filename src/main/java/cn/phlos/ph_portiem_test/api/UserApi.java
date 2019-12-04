@@ -40,7 +40,7 @@ public class UserApi {
     }
 
     @GetMapping("find")
-    public User findById(String id) {
+    public User findById(Integer id) {
         return userService.findOne(id);
     }
 

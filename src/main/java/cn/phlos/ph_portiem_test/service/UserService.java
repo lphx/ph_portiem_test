@@ -12,6 +12,6 @@ public interface UserService {
     void save(User user);
     void remove(String id);
     int count();
-    User findOne(String id);
+    User findOne(Integer id);
     List<User> findAllList();
 }
